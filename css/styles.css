@@ -139,6 +139,7 @@ p {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    flex-wrap: wrap; /* Asegura que las cards se ajusten cuando no haya suficiente espacio */
 }
 
 /* Estilo de las cards */
@@ -148,6 +149,7 @@ p {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 15px;
     width: 300px; /* Controlar el tamaño de las cards */
+    flex: 1 1 300px; /* Permite que las cards se ajusten a pantallas más pequeñas */
 }
 
 .card-body {
@@ -207,6 +209,11 @@ p {
     .table {
         font-size: 0.9rem;
         margin-top: 20px;
+    }
+
+    /* Ajustar el tamaño de las cards en dispositivos móviles */
+    .card {
+        width: 90%; /* Asegura que las cards no ocupen todo el espacio y tengan márgenes */
     }
 }
 
