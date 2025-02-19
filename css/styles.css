@@ -1,0 +1,257 @@
+/* Colores globales */
+:root {
+    --primary-color: #f1c40f; /* Amarillo brillante */
+    --secondary-color: #333; /* Gris oscuro */
+    --accent-color: #e74c3c; /* Rojo para acentos */
+    --bg-color: #ecf0f1; /* Gris claro */
+    --navbar-bg: #2c3e50; /* Fondo de la barra de navegación */
+    --footer-bg: #2c3e50; /* Fondo del footer */
+}
+
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+h1, h2 {
+    font-family: 'Helvetica', sans-serif;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--navbar-bg);
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.navbar-toggler {
+    border-color: var(--accent-color);
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+/* Fondo */
+.background-squares {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, #f8f9fa 25%, transparent 25%, transparent 50%, #f8f9fa 50%, #f8f9fa 75%, transparent 75%, transparent);
+    background-size: 60px 60px;
+    opacity: 0.2;
+    animation: moveBackground 10s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Contenido principal */
+.container {
+    margin-top: 120px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+p {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+/* Estilo de la tabla de zonas horarias */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 1.1rem;
+}
+
+.table th {
+    background-color: var(--navbar-bg);
+    color: white;
+}
+
+.table td {
+    background-color: #fff;
+}
+
+.table td#statusLondon,
+.table td#statusNY,
+.table td#statusTokyo,
+.table td#statusSydney {
+    font-weight: bold;
+}
+
+/* Centrar las cards */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* Estilo de las cards */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 300px; /* Controlar el tamaño de las cards */
+}
+
+.card-body {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+.card .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 25px;
+}
+
+.card .btn:hover {
+    background-color: var(--accent-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .container {
+        margin-top: 80px;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+        margin-top: 20px;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--footer-bg); /* Igual que la navbar */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-social {
+    margin-top: 10px;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+.footer-social a:hover {
+    color: var(--accent-color);
+}
+
+.footer p {
+    color: #bbb; /* Más oscuro que el anterior */
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zonas Horarias</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Herramientas para Traders</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="zones.html">Zonas Horarias</a></li>
+          <li class="nav-item"><a class="nav-link" href="diccionary.html">Diccionario de Trading</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container mt-5 pt-4">
+    <h2 class="text-center">Convertidor de Zonas Horarias para Trading</h2>
+    <p class="text-center">Horarios actuales de los principales mercados:</p>
+
+    <!-- Tabla responsive -->
+    <div class="table-responsive">
+      <table class="table table-bordered text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Mercado</th>
+            <th>Zona Horaria</th>
+            <th>Hora Actual</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Londres</td>
+            <td>Europe/London</td>
+            <td id="timeLondon">--:--:--</td>
+            <td id="statusLondon">-</td>
+          </tr>
+          <tr>
+            <td>Nueva York</td>
+            <td>America/New_York</td>
+            <td id="timeNY">--:--:--</td>
+            <td id="statusNY">-</td>
+          </tr>
+          <tr>
+            <td>Tokio</td>
+            <td>Asia/Tokyo</td>
+            <td id="timeTokyo">--:--:--</td>
+            <td id="statusTokyo">-</td>
+          </tr>
+          <tr>
+            <td>Sídney</td>
+            <td>Australia/Sydney</td>
+            <td id="timeSydney">--:--:--</td>
+            <td id="statusSydney">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">© 2025 Herramientas para Traders. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function updateMarketTimes() {
+      const markets = [
+        { id: 'London', timeZone: 'Europe/London', open: 8, close: 16 },
+        { id: 'NY', timeZone: 'America/New_York', open: 9.5, close: 16 },
+        { id: 'Tokyo', timeZone: 'Asia/Tokyo', open: 9, close: 15 },
+        { id: 'Sydney', timeZone: 'Australia/Sydney', open: 10, close: 16 }
+      ];
+
+      markets.forEach(market => {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('es-ES', { timeZone: market.timeZone });
+        document.getElementById('time' + market.id).innerText = timeString;
+
+        const nowInMarket = new Date(now.toLocaleString('en-US', { timeZone: market.timeZone }));
+        const hours = nowInMarket.getHours();
+        const minutes = nowInMarket.getMinutes();
+        const currentTimeDecimal = hours + minutes / 60;
+
+        const status = (currentTimeDecimal >= market.open && currentTimeDecimal < market.close) ? 'Abierto' : 'Cerrado';
+        document.getElementById('status' + market.id).innerText = status;
+      });
+    }
+
+    setInterval(updateMarketTimes, 1000);
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
